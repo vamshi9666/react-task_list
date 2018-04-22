@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import List from './list'
 
 class App extends Component {
+  state={
+  	tasks :[
+  	{ name: 'make your ctrlB project into react and ', time: 'one month'},
+  	{ name:' make actions on google app',time:'until april ending'}
+  	],
+  }
+
+  handleChange = (=>{
+
+  })
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="whole">
+        <h2>My tasks </h2>
+       {this.state.tasks.map((task)=>{
+        return <List name={task.name} time={task.time}/>
+          
+       })}
+        <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text"  onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+
       </div>
     );
   }
